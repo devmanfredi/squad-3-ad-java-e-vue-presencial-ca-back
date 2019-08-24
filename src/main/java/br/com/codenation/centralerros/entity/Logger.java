@@ -1,6 +1,5 @@
 package br.com.codenation.centralerros.entity;
 
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

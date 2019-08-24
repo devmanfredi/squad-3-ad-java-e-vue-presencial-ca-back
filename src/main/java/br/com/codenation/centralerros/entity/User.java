@@ -3,6 +3,7 @@ package br.com.codenation.centralerros.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,9 +33,10 @@ public class User {
 
     @NotNull
     @Size(max = 255)
-    private String passWord;
+    private String password;
 
     @NotNull
+    @Email
     @Size(max = 255)
     private String email;
 
