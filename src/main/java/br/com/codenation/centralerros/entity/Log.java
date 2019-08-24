@@ -17,7 +17,7 @@ import java.time.LocalTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Logger {
+public class Log {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
