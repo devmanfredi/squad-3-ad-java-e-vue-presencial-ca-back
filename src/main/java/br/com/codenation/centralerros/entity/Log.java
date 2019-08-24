@@ -32,10 +32,10 @@ public class Log {
     private String details;
 
     @NotNull
-    private LocalDate localDate;
+    private LocalDate entryDate;
 
     @NotNull
-    private LocalTime localTime;
+    private LocalTime entryTime;
 
     @NotNull
     @Size(max = 255)
