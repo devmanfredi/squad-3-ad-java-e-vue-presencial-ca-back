@@ -21,7 +21,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
 
     @NotNull
     @Size(max = 255)
@@ -40,7 +40,7 @@ public class User {
     @Size(max = 255)
     private String email;
 
-    private Long quantityItens;
+    private Integer qtdItensPerPage;
 
     @NotNull
     @Size(max = 255)
