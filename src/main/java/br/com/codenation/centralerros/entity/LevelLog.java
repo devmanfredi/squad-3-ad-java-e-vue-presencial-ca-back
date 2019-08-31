@@ -1,6 +1,6 @@
-package br.com.codenation.centralerros.enuns;
+package br.com.codenation.centralerros.entity;
 
-public enum LevelEnum {
+public enum LevelLog {
 
     //TODO: colocar peso para cada level, para organizar a ordenação @paulo.vieira
 
