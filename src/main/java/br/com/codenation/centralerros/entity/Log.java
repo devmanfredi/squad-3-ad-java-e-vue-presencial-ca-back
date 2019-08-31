@@ -10,8 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -28,16 +27,15 @@ public class Log {
     private String title;
 
     @NotNull
-    @Size(max= 2500)
+    @Size(max = 2500)
     private String details;
 
     @NotNull
-    private LocalDate entryDate;
-
-    @NotNull
-    private LocalTime entryTime;
+    private LocalDateTime createdAt;
 
     @NotNull
     @Size(max = 255)
     private String collectedBy;
+
+    private User user;
 }

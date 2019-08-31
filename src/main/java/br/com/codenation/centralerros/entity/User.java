@@ -40,7 +40,7 @@ public class User {
     @Size(max = 255)
     private String email;
 
-    private Integer qtdItensPerPage;
+    private Integer itensPerPage;
 
     @NotNull
     @Size(max = 255)
