@@ -15,13 +15,18 @@ public class UserService implements UserServiceInterface {
 
     private UserRepository userRepository;
 
-    public Users save (Users user){
+    public Users save(Users user){
         return userRepository.save(user);
     }
 
     public List<Users> findAll(){
         return userRepository.findAll();
     }
+
+    public Users findUserByCode(String userCode){
+        return userRepository.findByCode(userCode).orElse(null);
+    }
+
 
     public Optional<Users> findById(Long userId){
         return userRepository.findById(userId);
