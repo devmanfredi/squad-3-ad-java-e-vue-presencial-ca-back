@@ -2,8 +2,22 @@ package br.com.codenation.centralerros.entity;
 
 public enum ServerOrigin {
 
-    //TODO: String servidor
+    PRODUCAO("PRD"),
+    HOMOLOGACAO("HML"),
+    DESENVOLVIMENTO("DESENV");
 
-    PRODUCAO, HOMOLOGACAO, DESENV
+    private String valor;
+
+    ServerOrigin(String valor){
+        this.valor = valor;
+    }
+
+    public String get() {
+        return valor;
+    }
+
+    public boolean equals(String valor){
+        return this.valor.equals(valor);
+    }
 
 }

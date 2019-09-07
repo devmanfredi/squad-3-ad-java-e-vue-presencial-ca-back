@@ -48,5 +48,5 @@ public class Log {
     private Application application;
 
     @ManyToOne
-    private User user;
+    private Users user;
 }

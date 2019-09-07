@@ -26,6 +26,6 @@ public class Application {
     private Company company;
 
     @ManyToOne
-    private User user;
+    private Users user;
 
 }

@@ -1,6 +1,6 @@
 package br.com.codenation.centralerros.controller;
 
-import br.com.codenation.centralerros.entity.User;
+import br.com.codenation.centralerros.entity.Users;
 import br.com.codenation.centralerros.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User save (@RequestBody User user){
+    public Users save (@RequestBody Users user){
         return userService.save(user);
     }
 
     @GetMapping
-    public List<User> findAll(){
+    public List<Users> findAll(){
         return userService.findAll();
     }
 
