@@ -1,6 +1,6 @@
 package br.com.codenation.centralerros.controller;
 
-import br.com.codenation.centralerros.entity.Users;
+import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +14,15 @@ public class UserController {
 
     private UserService userService;
 
+    //TODO: implementar CRUD
     @PostMapping
-    public Users save (@RequestBody Users user){
+    public User save (@RequestBody User user){
         return userService.save(user);
     }
 
     @GetMapping
-    public List<Users> findAll(){
+    public List<User> findAll(){
         return userService.findAll();
     }
-
 
 }

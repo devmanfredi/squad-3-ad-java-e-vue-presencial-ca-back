@@ -1,6 +1,6 @@
 package br.com.codenation.centralerros.services;
 
-import br.com.codenation.centralerros.entity.Users;
+import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.repository.UserRepository;
 import br.com.codenation.centralerros.service.interfaces.UserServiceInterface;
 import lombok.AllArgsConstructor;
@@ -15,20 +15,20 @@ public class UserService implements UserServiceInterface {
 
     private UserRepository userRepository;
 
-    public Users save(Users user){
+    public User save(User user){
         return userRepository.save(user);
     }
 
-    public List<Users> findAll(){
+    public List<User> findAll(){
         return userRepository.findAll();
     }
 
-    public Users findUserByCode(String userCode){
+    public User findUserByCode(String userCode){
         return userRepository.findByCode(userCode).orElse(null);
     }
 
 
-    public Optional<Users> findById(Long userId){
+    public Optional<User> findById(Long userId){
         return userRepository.findById(userId);
     }
 

@@ -1,6 +1,6 @@
 package br.com.codenation.centralerros.config;
 
-import br.com.codenation.centralerros.entity.Users;
+import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        Users usuario = new Users();
+        User usuario = new User();
         usuario.setPassword("12345");
         usuario.setEmail("paulo.vieira@gmail.com");
         usuario.setName("Paulo GUstavo");
