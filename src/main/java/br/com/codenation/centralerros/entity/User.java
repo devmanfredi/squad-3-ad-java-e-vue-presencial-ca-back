@@ -55,6 +55,9 @@ public class User implements UserDetails {
     @ManyToOne
     private Company company;
 
+    @OneToOne
+    private UserType userType;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -66,7 +69,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 

@@ -40,8 +40,8 @@ public class Log {
     @Enumerated(EnumType.STRING)
     private LevelLog level;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @OneToOne
     private ServerOrigin serverOrigin;
 
     @ManyToOne
@@ -49,4 +49,7 @@ public class Log {
 
     @ManyToOne
     private User user;
+
+    @OneToOne
+    private LevelLog levelLog;
 }

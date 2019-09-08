@@ -28,4 +28,7 @@ public class Application {
     @ManyToOne
     private User user;
 
+    @OneToMany
+    private Log log;
+
 }

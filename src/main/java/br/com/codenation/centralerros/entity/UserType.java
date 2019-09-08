@@ -1,14 +1,14 @@
 package br.com.codenation.centralerros.entity;
 
-public enum ServerOrigin {
+public enum UserType {
 
-    PRODUCAO("PRD"),
-    HOMOLOGACAO("HML"),
-    DESENVOLVIMENTO("DESENV");
+    USER("user"),
+    ADMIN("admin"),
+    COMPANYADMIN("companyadmin");
 
     private String valor;
 
-    ServerOrigin(String valor) {
+    UserType(String valor) {
         this.valor = valor;
     }
 
