@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,7 +29,7 @@ public class Application {
     @ManyToOne
     private User user;
 
-    @OneToMany
-    private Log log;
+    @OneToMany(mappedBy = "id.application")
+    private List<Log> log;
 
 }

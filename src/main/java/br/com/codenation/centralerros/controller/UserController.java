@@ -16,12 +16,8 @@ public class UserController {
 
     private UserService userService;
 
-    //TODO: implementar CRUD
     @PostMapping
-    public User save(@RequestBody User user) throws MessageException {
-        if(userService.verifyId(user.getId())){
-            //TODO: exceptions
-        }
+    public User save(User user) throws MessageException {
         return userService.save(user);
     }
 
@@ -32,11 +28,7 @@ public class UserController {
 
     @PutMapping
     public User edit(User user) {
-        if (userService.verifyId(user.getId())){
-            //edita
-        }
 
-        //TODO:exceptions
         return null;
 
     }

@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -55,8 +56,14 @@ public class User implements UserDetails {
     @ManyToOne
     private Company company;
 
-    @OneToOne
+    //@OneToOne
     private UserType userType;
+
+    @OneToMany(mappedBy = "id.user")
+    private List<Application> application;
+
+    @OneToMany(mappedBy = "id.user")
+    private List<Log> log;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -92,4 +99,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

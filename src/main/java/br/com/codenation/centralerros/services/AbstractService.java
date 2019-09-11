@@ -1,5 +1,6 @@
 package br.com.codenation.centralerros.services;
 
+import br.com.codenation.centralerros.exception.MessageException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ public class AbstractService<R extends JpaRepository<T, ID>, T, ID> {
 
     protected R repository;
 
-    public T save(T entity) {
+    public T save(T entity) throws MessageException {
         return repository.save(entity);
     }
 

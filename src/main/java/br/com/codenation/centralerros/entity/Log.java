@@ -41,7 +41,7 @@ public class Log {
     private LevelLog level;
 
     @Enumerated(EnumType.STRING)
-    @OneToOne
+    //@OneToOne
     private ServerOrigin serverOrigin;
 
     @ManyToOne
@@ -50,6 +50,6 @@ public class Log {
     @ManyToOne
     private User user;
 
-    @OneToOne
+    //@OneToOne
     private LevelLog levelLog;
 }
