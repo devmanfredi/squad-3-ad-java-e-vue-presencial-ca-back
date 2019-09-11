@@ -43,11 +43,9 @@ public class User implements UserDetails {
 
     private Integer itensPerPage;
 
-    @NotNull
     @Size(max = 120)
     private String token;
 
-    @NotNull
     private LocalDateTime creationDate;
 
     private Boolean active;
@@ -55,7 +53,7 @@ public class User implements UserDetails {
     @ManyToOne
     private Company company;
 
-    @OneToOne
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     @Override
