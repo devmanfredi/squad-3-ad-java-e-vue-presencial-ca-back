@@ -9,7 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -37,13 +36,20 @@ public class Log {
     @Size(max = 255)
     private String collectedBy;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private LevelLog level;
+
+    @Enumerated(EnumType.STRING)
+    @OneToOne
+    private ServerOrigin serverOrigin;
+
+    @ManyToOne
+    private Application application;
 
     @ManyToOne
     private User user;
 
-    @OneToMany
-    private List<LogSource> logSource;
-
+    @OneToOne
+    private LevelLog levelLog;
 }

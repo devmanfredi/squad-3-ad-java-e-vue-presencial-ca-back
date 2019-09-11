@@ -1,7 +1,5 @@
 package br.com.codenation.centralerros.entity;
 
-import javax.persistence.Entity;
-
 public enum LevelLog {
 
     INFO("info"),
@@ -13,7 +11,7 @@ public enum LevelLog {
 
     private String valor;
 
-    LevelLog(String valor) {
+    LevelLog(String valor){
         this.valor = valor;
     }
 
@@ -21,7 +19,7 @@ public enum LevelLog {
         return valor;
     }
 
-    public boolean equals(String valor) {
+    public boolean equals(String valor){
         return this.valor.equals(valor);
     }
 }
