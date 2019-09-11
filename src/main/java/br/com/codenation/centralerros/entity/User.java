@@ -13,11 +13,10 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-@Entity
+@Entity(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -55,7 +54,7 @@ public class User implements UserDetails {
     @ManyToOne
     private Company company;
 
-    @OneToOne
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     @Override

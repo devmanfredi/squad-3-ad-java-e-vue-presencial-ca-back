@@ -36,12 +36,7 @@ public class Log {
     @Size(max = 255)
     private String collectedBy;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    private LevelLog level;
-
-    @Enumerated(EnumType.STRING)
-    @OneToOne
     private ServerOrigin serverOrigin;
 
     @ManyToOne
@@ -50,6 +45,6 @@ public class Log {
     @ManyToOne
     private User user;
 
-    @OneToOne
+    @Enumerated(EnumType.STRING)
     private LevelLog levelLog;
 }
