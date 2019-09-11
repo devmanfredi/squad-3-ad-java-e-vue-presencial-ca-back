@@ -23,30 +23,24 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Size(max = 50)
     private String code;
 
-    @NotNull
     @Size(max = 120)
     private String name;
 
-    @NotNull
     @Size(max = 10)
     private String password;
 
-    @NotNull
     @Email
     @Size(max = 50)
     private String email;
 
     private Integer itensPerPage;
 
-    @NotNull
     @Size(max = 120)
     private String token;
 
-    @NotNull
     private LocalDateTime creationDate;
 
     private Boolean active;
@@ -64,13 +58,14 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return email;
     }
 
     @Override
     public String getPassword() {
         return password;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {

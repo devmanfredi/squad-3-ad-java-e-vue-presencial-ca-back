@@ -4,6 +4,7 @@ import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.repository.UserRepository;
 import br.com.codenation.centralerros.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,21 +18,22 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @Configuration
 @EnableAuthorizationServer
-@AllArgsConstructor
 public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
 
     private UserService userService;
 
+    @Autowired
     protected void configure(AuthenticationManagerBuilder auth, UserRepository repository) throws Exception {
 
         User usuario = new User();
-        usuario.setPassword("12345");
+        usuario.setPassword("java");
         usuario.setEmail("paulo.vieira@gmail.com");
         usuario.setName("Paulo GUstavo");
         usuario.setCode("pgvieira");
+        usuario.setId(40L);
 
-        if (userService.findAll().isEmpty())
-            repository.saveAndFlush(usuario);
+//        if (userService.findAll().isEmpty())
+        repository.saveAndFlush(usuario);
 
 
         auth.userDetailsService(code ->

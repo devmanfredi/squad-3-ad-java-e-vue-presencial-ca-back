@@ -28,14 +28,11 @@ public class UserController {
 
     @PutMapping
     public User edit(User user) {
-
         return null;
-
     }
 
     @DeleteMapping
     public void delete(Long userId){
         userService.delete(userId);
     }
-
 }
