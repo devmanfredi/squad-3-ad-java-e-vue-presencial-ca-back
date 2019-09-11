@@ -27,7 +27,11 @@ public class Company {
     @Size(max = 120)
     private String name;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "id.company")
     private List<Application> application;
+
+    @OneToMany(mappedBy = "id.company")
+    private List<User> user;
+
 
 }
