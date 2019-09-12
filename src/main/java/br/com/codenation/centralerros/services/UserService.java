@@ -31,6 +31,6 @@ public class UserService extends AbstractService<UserRepository,User,Long> {
         if (repository.findById(user.getId()).isPresent()) {
             throw new MessageException("Id já utilizado");
         }
-        return repository.save(user);
+        return repository.saveAndFlush(user);
     }
 }
