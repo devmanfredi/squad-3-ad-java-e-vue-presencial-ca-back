@@ -3,6 +3,8 @@ package br.com.codenation.centralerros.controller;
 import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.services.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,13 +28,17 @@ public class UserController {
         return userService.findAll();
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", required = true, paramType = "header")
+    })
+
     @PutMapping
     public User edit(User user) {
         return null;
     }
 
     @DeleteMapping
-    public void delete(Long userId){
+    public void delete(Long userId) {
         userService.delete(userId);
     }
 }
