@@ -32,6 +32,11 @@ public class LogController {
         return logService.findByLevel(level);
     }
 
+    @GetMapping
+    public List<Log> orderByLevelLog() {
+        return logService.orderByLevelLog();
+    }
+
     @PostMapping
     public Log save(Log log) {
         //log.setCreatedAt(LocalDateTime.now());

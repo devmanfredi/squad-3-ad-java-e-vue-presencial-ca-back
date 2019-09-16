@@ -14,4 +14,6 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     List<Log> findByServerOrigin(ServerOrigin origin);
 
     List<Log> findByLevelLog(LevelLog level);
+
+    List<Log> findAllByIdOrderByLevelLog();
 }
