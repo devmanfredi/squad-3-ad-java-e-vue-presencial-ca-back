@@ -21,7 +21,6 @@ public class LogService {
 
     public List<Log> findAllByOrigin(ServerOrigin origin) {
         return logRepository.findAllByServerOrigin(origin);
-        logRepository.
     }
 
     public List<Log> findByServerOrigin(ServerOrigin origin) {
