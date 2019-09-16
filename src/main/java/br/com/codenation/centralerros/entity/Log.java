@@ -36,6 +36,8 @@ public class Log {
     @Size(max = 255)
     private String collectedBy;
 
+    private boolean toFile = false;
+
     @Enumerated(EnumType.STRING)
     private ServerOrigin serverOrigin;
 

@@ -17,14 +17,17 @@ public class LogController {
 
     private LogService logService;
 
-//    @GetMapping
-//    public List<Log> findAll() {
-//        return logService.findAll();
-//    }
-
     @GetMapping("/{origin}")
-    public List<Log> findByOrigin(@PathVariable(value = "origin") ServerOrigin origin) {
-        return logService.findByOrigin(origin);
+    public List<Log> findByServerOrigin(@PathVariable(value = "origin") ServerOrigin origin) {
+        return logService.findAllByOrigin(origin);
+    }
+
+    @GetMapping("/{orderBy}")
+    public List<Log> orderByLevelLog(@PathVariable(value = "orderBy") String orderBy) {
+        if (orderBy.equalsIgnoreCase("level")) {
+            return logService.orderByLevelLog();
+        }
+        return logService.findAll(); //TODO: implementar query para buscar por frequência
     }
 
     @GetMapping("/{level}")
@@ -32,9 +35,11 @@ public class LogController {
         return logService.findByLevel(level);
     }
 
-    @GetMapping
-    public List<Log> orderByLevelLog() {
-        return logService.orderByLevelLog();
+    //TODO: Implementar buscarPorDescrição
+
+    @GetMapping("/{serverOrigin}")
+    public List<Log> findByOrigin(@PathVariable(value = "serverOrigin") ServerOrigin origin) {
+        return logService.findByServerOrigin(origin);
     }
 
     @PostMapping
@@ -42,4 +47,16 @@ public class LogController {
         //log.setCreatedAt(LocalDateTime.now());
         return logService.save(log);
     }
+
+    @PutMapping("/{id}")
+    public void toFile(@PathVariable("id") List<Long> id) {
+        logService.toFile(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable(value = "id") List<Long> id) {
+        logService.deleteLog(id);
+    }
+
+
 }

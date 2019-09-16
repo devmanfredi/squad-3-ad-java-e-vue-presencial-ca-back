@@ -19,7 +19,12 @@ public class LogService {
         return logRepository.findAll();
     }
 
-    public List<Log> findByOrigin(ServerOrigin origin) {
+    public List<Log> findAllByOrigin(ServerOrigin origin) {
+        return logRepository.findAllByServerOrigin(origin);
+        logRepository.
+    }
+
+    public List<Log> findByServerOrigin(ServerOrigin origin) {
         return logRepository.findByServerOrigin(origin);
     }
 
@@ -28,10 +33,18 @@ public class LogService {
     }
 
     public List<Log> orderByLevelLog() {
-        return logRepository.findAllByOrderByLevelLog();
+        return logRepository.findAllByOrderByLevelLogDesc();
+    }
+
+    public void toFile(List<Long> id) {
+        id.forEach(idLog -> logRepository.toFile(idLog));
     }
 
     public Log save(Log log) {
         return logRepository.save(log);
+    }
+
+    public void deleteLog(List<Long> id) {
+        id.forEach(idLog -> logRepository.deleteById(idLog));
     }
 }
