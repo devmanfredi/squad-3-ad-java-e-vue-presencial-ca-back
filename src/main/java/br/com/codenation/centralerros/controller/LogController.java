@@ -17,10 +17,10 @@ public class LogController {
 
     private LogService logService;
 
-    @GetMapping
-    public List<Log> findAll() {
-        return logService.findAll();
-    }
+//    @GetMapping
+//    public List<Log> findAll() {
+//        return logService.findAll();
+//    }
 
     @GetMapping("/{origin}")
     public List<Log> findByOrigin(@PathVariable(value = "origin") ServerOrigin origin) {

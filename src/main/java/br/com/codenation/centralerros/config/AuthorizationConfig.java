@@ -17,48 +17,42 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationConfig extends WebSecurityConfigurerAdapter
-{
-	@Autowired
-	private UserService userService;
+public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserService userService;
 
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception
-	{
-		if (userService.findAll().isEmpty())
-		{
-			User usuario = new User();
-			usuario.setPassword("teste");
-			usuario.setEmail("teste@gmail.com");
-			usuario.setName("Administrador");
-			usuario.setCode("admin");
-			usuario.setId(1L);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        if (userService.findAll().isEmpty()) {
+            User usuario = new User();
+            usuario.setPassword("teste");
+            usuario.setEmail("teste@gmail.com");
+            usuario.setName("Administrador");
+            usuario.setCode("admin");
+            usuario.setId(1L);
 
-			userService.save(usuario);
-		}
+            userService.save(usuario);
+        }
 
-		auth.userDetailsService(code -> userService.findUserByCode(code));
-	}
+        auth.userDetailsService(code -> userService.findUserByCode(code));
+    }
 
-	@Override
-	public void configure(WebSecurity web) throws Exception
-	{
-		web.ignoring()
-			.antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
-				"/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**",
-				"/swagger-ui.html", "/webjars/**", "/**/*.css", "/**/*.js");
-	}
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
+                        "/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**",
+                        "/swagger-ui.html", "/webjars/**", "/**/*.css", "/**/*.js");
+    }
 
-	@Bean
-	@Override
-	protected AuthenticationManager authenticationManager() throws Exception
-	{
-		return super.authenticationManager();
-	}
+    @Bean
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder()
-	{
-		return NoOpPasswordEncoder.getInstance();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
 }

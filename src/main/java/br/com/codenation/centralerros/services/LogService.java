@@ -28,7 +28,7 @@ public class LogService {
     }
 
     public List<Log> orderByLevelLog() {
-        return logRepository.findAllByIdOrderByLevelLog();
+        return logRepository.findAllByOrderByLevelLog();
     }
 
     public Log save(Log log) {
