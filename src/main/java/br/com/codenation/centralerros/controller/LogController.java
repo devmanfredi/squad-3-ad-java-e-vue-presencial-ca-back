@@ -1,13 +1,11 @@
 package br.com.codenation.centralerros.controller;
 
+import br.com.codenation.centralerros.entity.LevelLog;
 import br.com.codenation.centralerros.entity.Log;
+import br.com.codenation.centralerros.entity.ServerOrigin;
 import br.com.codenation.centralerros.services.LogService;
 import lombok.AllArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,9 +22,19 @@ public class LogController {
         return logService.findAll();
     }
 
+    @GetMapping("/{origin}")
+    public List<Log> findByOrigin(@PathVariable(value = "origin") ServerOrigin origin) {
+        return logService.findByOrigin(origin);
+    }
+
+    @GetMapping("/{level}")
+    public List<Log> findByLevel(@PathVariable(value = "level") LevelLog level) {
+        return logService.findByLevel(level);
+    }
+
     @PostMapping
     public Log save(Log log) {
-        log.setCreatedAt(LocalDateTime.now());
+        //log.setCreatedAt(LocalDateTime.now());
         return logService.save(log);
     }
 }
