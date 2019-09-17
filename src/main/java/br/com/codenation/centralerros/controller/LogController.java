@@ -5,6 +5,7 @@ import br.com.codenation.centralerros.entity.Log;
 import br.com.codenation.centralerros.entity.ServerOrigin;
 import br.com.codenation.centralerros.services.LogService;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -17,29 +18,32 @@ public class LogController {
 
     private LogService logService;
 
-    @GetMapping("/{origin}")
-    public List<Log> findByServerOrigin(@PathVariable(value = "origin") ServerOrigin origin) {
-        return logService.findAllByOrigin(origin);
+    @GetMapping
+    public List<Log> findAllByServerOrigin() {
+        return logService.findAll();
     }
 
-    @GetMapping("/{orderBy}")
-    public List<Log> orderByLevelLog(@PathVariable(value = "orderBy") String orderBy) {
-        if (orderBy.equalsIgnoreCase("level")) {
-            return logService.orderByLevelLog();
+    @GetMapping("/{origin}/{orderBy}")
+    public List<Log> findAllByServerOriginOrderByLevelLogDesc(@PathVariable(value = "origin") String origin, @PathVariable(value = "orderBy") String orderBy) {
+        if (orderBy.equalsIgnoreCase("orderByLevel")) {
+            return logService.findAllByServerOriginOrderByLevelLogDesc(origin);
         }
-        return logService.findAll(); //TODO: implementar query para buscar por frequência
+        //TODO: implementar query para ordenar por frequência
+        return logService.findAllByServerOrigin(origin);
     }
 
-    @GetMapping("/{level}")
-    public List<Log> findByLevel(@PathVariable(value = "level") LevelLog level) {
-        return logService.findByLevel(level);
-    }
-
-    //TODO: Implementar buscarPorDescrição
-
-    @GetMapping("/{serverOrigin}")
-    public List<Log> findByOrigin(@PathVariable(value = "serverOrigin") ServerOrigin origin) {
-        return logService.findByServerOrigin(origin);
+    @GetMapping("/search/{filter}/{value}")
+    public List<Log> findBySearchBar(@PathVariable(value = "filter") String filter, @PathVariable(value = "value") String value) {
+        if (filter.equalsIgnoreCase("level")) {
+            return logService.findByLevel(value);
+        }
+//        if (filter.equalsIgnoreCase("description")) {
+//            //TODO: implementar findByDescription
+//        }
+        if (filter.equalsIgnoreCase("origin")) {
+            return logService.findByServerOrigin(value);
+        }
+        return logService.findAll();
     }
 
     @PostMapping
@@ -48,7 +52,7 @@ public class LogController {
         return logService.save(log);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/file/{id}")
     public void toFile(@PathVariable("id") List<Long> id) {
         logService.toFile(id);
     }
@@ -57,6 +61,4 @@ public class LogController {
     public void deleteById(@PathVariable(value = "id") List<Long> id) {
         logService.deleteLog(id);
     }
-
-
 }

@@ -9,20 +9,24 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 public interface LogRepository extends JpaRepository<Log, Long> {
 
-    List<Log> findAllByServerOrigin(ServerOrigin origin);
+    List<Log> findAllByServerOriginAndToFileFalse(ServerOrigin origin);
 
-    List<Log> findByServerOrigin(ServerOrigin origin);
+    List<Log> findByServerOriginAndToFileFalse(ServerOrigin origin);
 
-    List<Log> findByLevelLog(LevelLog level);
+    List<Log> findByLevelLogAndToFileFalse(LevelLog level);
 
-    List<Log> findAllByOrderByLevelLogDesc();
+    List<Log> findAllByToFileFalseOrderByLevelLogDesc();
+
+    List<Log> findAllByServerOriginAndToFileFalseOrderByLevelLogDesc(ServerOrigin origin);
 
     @Modifying(clearAutomatically = true)
+    @Transactional
     @Query("UPDATE Log a SET a.toFile = true WHERE a.id =:id")
     void toFile(@Param("id") Long id);
 

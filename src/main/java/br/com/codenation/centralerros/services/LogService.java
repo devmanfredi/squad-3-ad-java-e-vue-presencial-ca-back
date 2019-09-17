@@ -7,6 +7,8 @@ import br.com.codenation.centralerros.repository.LogRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -19,20 +21,24 @@ public class LogService {
         return logRepository.findAll();
     }
 
-    public List<Log> findAllByOrigin(ServerOrigin origin) {
-        return logRepository.findAllByServerOrigin(origin);
+    public List<Log> findAllByServerOrigin(String serverOrigin) {
+        return logRepository.findAllByServerOriginAndToFileFalse(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
     }
 
-    public List<Log> findByServerOrigin(ServerOrigin origin) {
-        return logRepository.findByServerOrigin(origin);
+    public List<Log> findByServerOrigin(String serverOrigin) {
+        return logRepository.findByServerOriginAndToFileFalse(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
     }
 
-    public List<Log> findByLevel(LevelLog level) {
-        return logRepository.findByLevelLog(level);
+    public List<Log> findByLevel(String level) {
+        return logRepository.findByLevelLogAndToFileFalse(LevelLog.valueOf(level.toUpperCase()));
     }
 
     public List<Log> orderByLevelLog() {
-        return logRepository.findAllByOrderByLevelLogDesc();
+        return logRepository.findAllByToFileFalseOrderByLevelLogDesc();
+    }
+
+    public List<Log> findAllByServerOriginOrderByLevelLogDesc(String serverOrigin) {
+        return logRepository.findAllByServerOriginAndToFileFalseOrderByLevelLogDesc(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
     }
 
     public void toFile(List<Long> id) {
