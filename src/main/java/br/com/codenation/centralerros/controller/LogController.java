@@ -48,7 +48,6 @@ public class LogController {
 
     @PostMapping
     public Log save(Log log) {
-        //log.setCreatedAt(LocalDateTime.now());
         return logService.save(log);
     }
 

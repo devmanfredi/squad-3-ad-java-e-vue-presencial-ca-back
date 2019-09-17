@@ -38,6 +38,7 @@ public class LogService {
     }
 
     public List<Log> findAllByServerOriginOrderByLevelLogDesc(String serverOrigin) {
+
         return logRepository.findAllByServerOriginAndToFileFalseOrderByLevelLogDesc(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
     }
 

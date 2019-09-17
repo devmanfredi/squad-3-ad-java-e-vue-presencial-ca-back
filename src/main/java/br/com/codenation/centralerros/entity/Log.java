@@ -41,12 +41,12 @@ public class Log {
     @Enumerated(EnumType.STRING)
     private ServerOrigin serverOrigin;
 
+    @Enumerated(EnumType.ORDINAL)
+    private LevelLog levelLog;
+
     @ManyToOne
     private Application application;
 
     @ManyToOne
     private User user;
-
-    @Enumerated(EnumType.STRING)
-    private LevelLog levelLog;
 }
