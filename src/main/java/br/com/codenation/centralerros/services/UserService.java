@@ -5,32 +5,48 @@ import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.repository.UserRepository;
 import br.com.codenation.centralerros.service.interfaces.UserServiceInterface;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService extends AbstractService<UserRepository,User,Long> {
+@AllArgsConstructor
+public class UserService implements UserServiceInterface {
 
-    @Autowired
-    public UserService(UserRepository repository) {
-        super(repository);
-    }
+    private UserRepository userRepository;
 
+    @Override
     public User findUserByCode(String userCode) {
-        return this.repository.findByCode(userCode).orElse(null);
+        return userRepository.findByCode(userCode).orElse(null);
     }
 
     public Optional<User> findById(Long userId) {
-        return this.repository.findById(userId);
+        return userRepository.findById(userId);
     }
 
     public User save(User user) throws MessageException {
-        if (repository.findById(user.getId()).isPresent()) {
-            throw new MessageException("Id já utilizado");
+        if (userRepository.findByCode(user.getCode()).isPresent()) {
+            throw new MessageException("Código de Usuário já utilizado!");
         }
-        return repository.saveAndFlush(user);
+        if (user.getEmail().isEmpty() || user.getPassword().isEmpty()) {
+            throw new MessageException("Campos incompletos!");
+        }
+        return userRepository.saveAndFlush(user);
+    }
+
+    public void delete(Long userId) throws MessageException {
+        if (userRepository.findById(userId).isPresent()) {
+            userRepository.deleteById(userId);
+        }
+        throw new MessageException("Usuário não encontrado!");
+    }
+
+    public List<User> findAll() {
+        if (userRepository.findAll().isEmpty()) {
+            return Collections.emptyList();
+        }
+        return userRepository.findAll();
     }
 }

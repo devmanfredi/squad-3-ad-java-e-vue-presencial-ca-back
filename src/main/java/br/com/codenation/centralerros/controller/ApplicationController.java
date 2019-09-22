@@ -22,7 +22,7 @@ public class ApplicationController {
     }
 
     @GetMapping
-    public List<Application> findAll(){
+    public List<Application> findAll() throws MessageException {
         return appService.findAll();
     }
 
@@ -32,7 +32,7 @@ public class ApplicationController {
     }
 
     @DeleteMapping
-    public void delete(Long id){
+    public void delete(Long id) throws MessageException {
         appService.delete(id);
     }
 

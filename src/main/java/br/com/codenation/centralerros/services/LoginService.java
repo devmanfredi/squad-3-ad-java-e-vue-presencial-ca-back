@@ -1,25 +1,31 @@
 package br.com.codenation.centralerros.services;
 
+import br.com.codenation.centralerros.entity.Log;
 import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.exception.MessageException;
-import br.com.codenation.centralerros.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.codenation.centralerros.repository.LoginRepository;
+import br.com.codenation.centralerros.service.interfaces.LoginServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class LoginService extends AbstractService<UserRepository, User, Long> {
+@AllArgsConstructor
+public class LoginService implements LoginServiceInterface {
 
-    @Autowired
-    public LoginService(UserRepository repository) {
-        super(repository);
-    }
+    private LoginRepository loginRepository;
 
-    public User login(Long id) throws MessageException {
-
-        if (repository.findById(id).isPresent()) {
-            return repository.findById(id).orElse(null);
+    public User login(String code, String password) throws MessageException {
+        if (loginRepository.findByCodeAndPassword(code, password).isPresent()) {
+            return loginRepository.findByCodeAndPassword(code, password).orElse(null);
         }
 
-        throw new MessageException("Usuário não encontrado.");
+        throw new MessageException("Usuário ou senha inválidos.");
     }
+
+    public List<Log> findAllLogs(Long companyId) {
+        return null;
+    }
+
 }

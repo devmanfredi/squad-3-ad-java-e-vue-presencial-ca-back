@@ -7,8 +7,6 @@ import br.com.codenation.centralerros.repository.LogRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -52,5 +50,9 @@ public class LogService {
 
     public void deleteLog(List<Long> id) {
         id.forEach(idLog -> logRepository.deleteById(idLog));
+    }
+
+    public List<Log> findLogsByApplication(Long companyId, Long userId) {
+        return logRepository.findLogsByApplicationAndCompanyAndUser(companyId, userId);
     }
 }

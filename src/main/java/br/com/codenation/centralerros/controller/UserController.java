@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -38,7 +37,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    public void delete(Long userId) {
+    public void delete(Long userId) throws MessageException {
         userService.delete(userId);
     }
 }

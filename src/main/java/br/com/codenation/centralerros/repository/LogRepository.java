@@ -31,4 +31,11 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     void toFile(@Param("id") Long id);
 
     void deleteById(Long id);
+
+    @Query(value = "select * from log as lo\n" +
+            "join application as ap on ap.id = lo.application_id\n" +
+            "join company as co on co.id = ap.company_id\n" +
+            "join users as us on us.company_id = :companyId\n" +
+            "where lo.user_id = :userId", nativeQuery = true)
+    List<Log> findLogsByApplicationAndCompanyAndUser(@Param("companyId") Long companyId, @Param("userId") Long userId);
 }
