@@ -3,7 +3,6 @@ package br.com.codenation.centralerros.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
@@ -11,12 +10,24 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
+    //@Override
+    //public void configure(HttpSecurity http) throws Exception {
+    //    http.antMatcher("/**").authorizeRequests().anyRequest().authenticated()
+    //            .antMatchers(HttpMethod.POST, "/**").permitAll()
+    //            .antMatchers(HttpMethod.GET, "/**").permitAll()
+    //            .anyRequest()
+    //            .authenticated();
+    //}
+
+    /*a método acima não tava permitindo acesso, mesmo com token*/
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**").authorizeRequests().anyRequest().authenticated()
-                .antMatchers(HttpMethod.POST, "/**").permitAll()
+        http.antMatcher("/**")
+                .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/**").permitAll()
                 .anyRequest()
                 .authenticated();
     }
+
 }

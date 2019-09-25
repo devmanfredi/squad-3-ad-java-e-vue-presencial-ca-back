@@ -25,7 +25,7 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
         if (userService.findAll().isEmpty()) {
             saveUser(auth);
         }
-        auth.userDetailsService(userService::findUserByCode);
+        //auth.userDetailsService(userService::findUserByCode);
     }
 
     @Override
@@ -55,7 +55,8 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
             usuario.setName("Administrador" + i);
             usuario.setCode("User" + i);
             usuario.setId((long) i);
-            userService.save(usuario);
+            userService.saveConfig(usuario);//temporário esse aqui é para a autenticação e o save normal está sendo usado nos testes e enpoints
+            auth.userDetailsService(userService::findUserByCode);
         }
     }
 }
