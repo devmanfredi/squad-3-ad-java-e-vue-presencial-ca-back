@@ -2,6 +2,7 @@ package br.com.codenation.centralerros.controller;
 
 import br.com.codenation.centralerros.entity.LevelLog;
 import br.com.codenation.centralerros.entity.Log;
+import br.com.codenation.centralerros.entity.LogSource;
 import br.com.codenation.centralerros.entity.ServerOrigin;
 import br.com.codenation.centralerros.services.LogService;
 import lombok.AllArgsConstructor;
