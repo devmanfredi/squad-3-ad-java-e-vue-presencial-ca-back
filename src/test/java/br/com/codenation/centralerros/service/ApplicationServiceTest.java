@@ -61,7 +61,6 @@ public class ApplicationServiceTest {
                 .id(id)
                 .appName("Amazon Cloud")
                 .company(Company.builder().id(1L).build())
-                .user(null)
                 .log(null)
                 .build();
     }

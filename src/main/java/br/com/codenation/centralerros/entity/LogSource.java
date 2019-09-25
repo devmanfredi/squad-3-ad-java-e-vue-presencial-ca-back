@@ -6,32 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Application {
+public class LogSource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 120)
-    private String appName;
-
     @ManyToOne
-    private Company company;
+    private Application application;
 
-    @OneToMany
-    private List<Log> log;
-
-    @ManyToOne
-    private User user;
-
+    @Enumerated(EnumType.STRING)
+    private ServerOrigin serverOrigin;
 }

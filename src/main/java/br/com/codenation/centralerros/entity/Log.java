@@ -46,4 +46,7 @@ public class Log {
 
     @ManyToOne
     private User user;
+
+    @OneToOne
+    private LogSource logSource;
 }
