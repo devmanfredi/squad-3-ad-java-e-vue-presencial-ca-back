@@ -87,13 +87,11 @@ public class GeradorLog {
         return stringList.get(random.nextInt(25));
     }
 
-    private String getDetails(String titleLog){
+    private String getDetails(String titleLog) {
         StringBuilder s = new StringBuilder();
         Random random = new Random();
-        s.append("Exception in thread 'main' " + titleLog +"");
+        s.append("Exception in thread 'main' " + titleLog + "");
         s.append(" at  java.lang.main(" + titleLog + ".java:" + random.nextInt(25) + ")");
         return s.toString();
     }
-
-
 }

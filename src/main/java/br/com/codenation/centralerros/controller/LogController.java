@@ -19,8 +19,8 @@ public class LogController {
     private LogService logService;
 
     @GetMapping
-    public List<Log> findAllByServerOrigin() {
-        return logService.findAll();
+    public List<Log> findAllByServerOrigin(@RequestParam(value = "serverOrigin", defaultValue = "producao") String serverOrigin) {
+        return logService.findAllByServerOrigin(serverOrigin);
     }
 
     @GetMapping("/{origin}/{orderBy}")
@@ -44,11 +44,6 @@ public class LogController {
             return logService.findByServerOrigin(value);
         }
         return logService.findAll();
-    }
-
-    @PostMapping
-    public Log save(Log log) {
-        return logService.save(log);
     }
 
     @PutMapping("/file/{id}")
