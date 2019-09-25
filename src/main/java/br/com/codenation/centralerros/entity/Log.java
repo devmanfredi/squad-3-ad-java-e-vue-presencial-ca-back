@@ -33,9 +33,6 @@ public class Log {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @Size(max = 255)
-    private String collectedBy;
-
     private boolean toFile = false;
 
     @Enumerated(EnumType.STRING)
