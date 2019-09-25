@@ -28,6 +28,4 @@ public class CentralDeErrosApplication {
                 .build();
         //.securitySchemes(Arrays.asList(new ApiKey("Token Access", HttpHeaders.AUTHORIZATION, In.HEADER.name())));
     }
-
-
 }
