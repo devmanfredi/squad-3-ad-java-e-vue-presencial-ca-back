@@ -19,7 +19,7 @@ public class LogController {
     private LogService logService;
 
     @GetMapping
-    public List<Log> findAllByServerOrigin(@RequestParam(value = "serverOrigin", defaultValue = "producao") String serverOrigin) {
+    public List<Log> findAllByServerOrigin(@RequestParam(value = "serverOrigin") String serverOrigin) {
         return logService.findAllByServerOrigin(serverOrigin);
     }
 
