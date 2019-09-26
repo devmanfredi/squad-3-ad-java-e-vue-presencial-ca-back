@@ -1,5 +1,6 @@
 package br.com.codenation.centralerros.services;
 
+import br.com.codenation.centralerros.dto.entitty.UserDTO;
 import br.com.codenation.centralerros.entity.Log;
 import br.com.codenation.centralerros.entity.User;
 import br.com.codenation.centralerros.exception.MessageException;
@@ -16,9 +17,9 @@ public class LoginService implements LoginServiceInterface {
 
     private LoginRepository loginRepository;
 
-    public User login(String code, String password) throws MessageException {
-        if (loginRepository.findByCodeAndPassword(code, password).isPresent()) {
-            return loginRepository.findByCodeAndPassword(code, password).orElse(null);
+    public User login(UserDTO user) throws MessageException {
+        if (loginRepository.findByCodeAndPassword(user.getCode(), user.getPassword()).isPresent()) {
+            return loginRepository.findByCodeAndPassword(user.getCode(), user.getPassword()).orElse(null);
         }
 
         throw new MessageException("Usuário ou senha inválidos.");
