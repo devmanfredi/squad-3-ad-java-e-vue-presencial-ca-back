@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControllerTest {
+public class UserControllerTest {
 
     @Autowired
     private UserController userController;
@@ -46,7 +46,7 @@ public class ControllerTest {
     private UserMapper userMapper;
 
     @Test
-    public void deveRetornarUmDto() throws MessageException {
+    public void deveRetornarUmUserDto() throws MessageException {
         UserDTO userDTO = buildUserDTO(null);
         Mockito.when(userController.save(userDTO)).thenReturn(buildUserDTO(10L));
         UserDTO result = userController.save(userDTO);
@@ -90,6 +90,5 @@ public class ControllerTest {
                 //.company(Company.builder().id(20L).build())
                 .build();
     }
-
 
 }
