@@ -33,7 +33,7 @@ public class CompanyControllerTest {
 
     @Test
     public void deveSalvarUmaCompanhiaDto() throws MessageException {
-        Company company = buildCompany(null);
+        CompanyDTO company = buildCompanyDTO(null);
         Mockito.when(companyController.save(company)).thenReturn(buildCompanyDTO(10L));
         CompanyDTO result = companyController.save(company);
         Assert.assertThat(result.getId(), Matchers.equalTo(10L));

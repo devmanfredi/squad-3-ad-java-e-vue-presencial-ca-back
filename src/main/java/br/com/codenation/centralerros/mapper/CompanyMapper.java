@@ -16,7 +16,9 @@ public interface CompanyMapper {
             @Mapping(source = "code", target = "code"),
             @Mapping(source = "name", target = "name"),
     })
-    CompanyDTO map(Company company);
+    Company map(CompanyDTO companyDTO);
 
-    List<CompanyDTO> mapList(List<Company> products);
+    CompanyDTO toDto(Company company);
+
+    List<Company> mapList(List<CompanyDTO> products);
 }
