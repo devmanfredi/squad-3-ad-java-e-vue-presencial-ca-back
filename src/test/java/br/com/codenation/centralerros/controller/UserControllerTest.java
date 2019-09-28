@@ -69,7 +69,6 @@ public class UserControllerTest {
                 .name("djavue djavue")
                 .email("djavue@djavue.com")
                 .password("12345")
-                .active(true)
                 .userType(UserType.ADMIN)
                 .company(Company.builder().id(20L).build())
                 .creationDate(LocalDateTime.now())
@@ -85,7 +84,6 @@ public class UserControllerTest {
                 .name("djavue djavue")
                 .email("djavue@djavue.com")
                 .password("12345")
-                .active(true)
                 .userType(UserType.ADMIN)
                 //.company(Company.builder().id(20L).build())
                 .build();
