@@ -19,7 +19,14 @@ public class LogSourceService {
     }
 
     public LogSource save(LogSource logSource) {
-        return logSourceRepository.saveAndFlush(logSource);
+        return logSourceRepository.save(logSource);
+    }
+
+    public LogSource findBydId(Long id) throws MessageException {
+        if (logSourceRepository.findById(id).isPresent()) {
+            return logSourceRepository.findById(id).orElse(null);
+        }
+        throw new MessageException("LogSource não encontrado!");
     }
 
     public LogSource update(LogSource logSource) throws MessageException {
@@ -28,6 +35,13 @@ public class LogSourceService {
         toUpdate.setServerOrigin(logSource.getServerOrigin());
         toUpdate.setURL(logSource.getURL());
 
-        return logSourceRepository.saveAndFlush(toUpdate);
+        return logSourceRepository.save(toUpdate);
     }
+
+    public LogSource delete(Long id) {
+        LogSource entity = logSourceRepository.findById(id).orElse(null);
+        logSourceRepository.delete(entity);
+        return entity;
+    }
+
 }

@@ -20,6 +20,11 @@ public class LogSourceController {
         return logSourceService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public LogSource findById(@PathVariable Long id) throws MessageException {
+        return logSourceService.findBydId(id);
+    }
+
     @PostMapping
     public LogSource save(@RequestBody LogSource logSource) {
         return logSourceService.save(logSource);
@@ -30,5 +35,9 @@ public class LogSourceController {
         return logSourceService.update(logSource);
     }
 
+    @DeleteMapping
+    public LogSource delete(@RequestBody LogSource logSource) {
+        return logSourceService.delete(logSource.getId());
+    }
 
 }
