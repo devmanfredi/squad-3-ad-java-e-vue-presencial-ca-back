@@ -6,21 +6,28 @@ import br.com.codenation.centralerros.repository.LogSourceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class LogSourceService {
 
     private LogSourceRepository logSourceRepository;
 
+    public List<LogSource> findAll() {
+        return logSourceRepository.findAll();
+    }
+
     public LogSource save(LogSource logSource) {
-        return logSourceRepository.save(logSource);
+        return logSourceRepository.saveAndFlush(logSource);
     }
 
     public LogSource update(LogSource logSource) throws MessageException {
         LogSource toUpdate = logSourceRepository.findById(logSource.getId()).orElseThrow(MessageException::new);
         toUpdate.setApplication(logSource.getApplication());
         toUpdate.setServerOrigin(logSource.getServerOrigin());
+        toUpdate.setURL(logSource.getURL());
 
-        return logSourceRepository.save(toUpdate);
+        return logSourceRepository.saveAndFlush(toUpdate);
     }
 }

@@ -44,7 +44,7 @@ public class GeradorLog {
         levelLogList.add(LevelLog.ERROR);
         levelLogList.add(LevelLog.WARNING);
         levelLogList.add(LevelLog.FATAL);
-        return levelLogList.get(random.nextInt(5));
+        return levelLogList.get(random.nextInt(6));
     }
 
     private ServerOrigin getServerOrigin() {
@@ -53,7 +53,7 @@ public class GeradorLog {
         serverOriginList.add(ServerOrigin.DESENVOLVIMENTO);
         serverOriginList.add(ServerOrigin.HOMOLOGACAO);
         serverOriginList.add(ServerOrigin.PRODUCAO);
-        return serverOriginList.get(random.nextInt(2));
+        return serverOriginList.get(random.nextInt(3));
     }
 
     private String getTitleLog() {
@@ -91,8 +91,8 @@ public class GeradorLog {
     private String getDetails(String titleLog) {
         StringBuilder s = new StringBuilder();
         Random random = new Random();
-        s.append("Exception in thread 'main' " + titleLog + "");
-        s.append(" at  java.lang.main(" + titleLog + ".java:" + random.nextInt(25) + ")");
+        s.append("Exception in thread 'main' ").append(titleLog);
+        s.append(" at  java.lang.main(").append(titleLog).append(".java:").append(random.nextInt(25)).append(")");
         return s.toString();
     }
 }

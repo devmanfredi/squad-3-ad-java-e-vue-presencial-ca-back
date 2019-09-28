@@ -45,7 +45,7 @@ public class LogService {
     }
 
     public Log save(Log log) {
-        return logRepository.save(log);
+        return logRepository.saveAndFlush(log);
     }
 
     public void deleteLog(List<Long> id) {
