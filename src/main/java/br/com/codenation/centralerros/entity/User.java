@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Size(max = 120)
     private String name;
 
-    @Size(max = 10)
+    @Size(max = 50)
     private String password;
 
     @Email
@@ -43,8 +43,6 @@ public class User implements UserDetails {
     private String token;
 
     private LocalDateTime creationDate;
-
-    private Boolean active;
 
     @ManyToOne
     private Company company;

@@ -17,7 +17,6 @@ public interface UserMapper {
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "email", target = "email"),
-            @Mapping(source = "active", target = "active"),
             //@Mapping(source = "company.id", target ="company.id"),
             @Mapping(source = "userType", target = "userType"),
             @Mapping(target = "creationDate", source = ""),

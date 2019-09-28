@@ -16,7 +16,6 @@ public class UserDTO {
     private String name;
     private String password;
     private String email;
-    private Boolean active;
     //private Company company;
     private UserType userType;
 }
