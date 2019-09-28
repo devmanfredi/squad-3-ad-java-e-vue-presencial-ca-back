@@ -38,7 +38,7 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
                         "/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**",
-                        "/swagger-ui.html", "/webjars/**", "/**/*.css", "/**/*.js", "/gerarLog");
+                        "/webjars/**", "/**/*.css", "/**/*.js", "/gerarLog");
     }
 
     @Bean

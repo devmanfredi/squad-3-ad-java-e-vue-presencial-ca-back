@@ -4,27 +4,28 @@ import br.com.codenation.centralerros.dto.entitty.CompanyDTO;
 import br.com.codenation.centralerros.entity.Company;
 import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.mapper.CompanyMapper;
+import br.com.codenation.centralerros.mapper.CompanyMapperImpl;
 import br.com.codenation.centralerros.repository.CompanyRepository;
 import br.com.codenation.centralerros.service.interfaces.CompanyServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class CompanyService implements CompanyServiceInterface {
 
-    @Autowired
     private CompanyRepository companyRepository;
-
     private CompanyMapper companyMapper;
 
 
-    public CompanyDTO save(CompanyDTO company) throws MessageException {
+    public CompanyDTO save(Company company) throws MessageException {
         if (companyRepository.findById(company.getId()).isPresent()) {
             throw new MessageException("Companhia já cadastrada.");
         }
-        return companyMapper.toDto(companyRepository.saveAndFlush(companyMapper.map(company)));
+        return companyMapper.map(companyRepository.saveAndFlush(company));
     }
 
     public Company finById(Long companyId) throws MessageException {

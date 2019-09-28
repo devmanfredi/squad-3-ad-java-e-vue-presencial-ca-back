@@ -18,7 +18,7 @@ public class CompanyController {
     private CompanyService companyService;
 
     @PostMapping
-    public CompanyDTO save(@RequestBody CompanyDTO company) throws MessageException {
+    public CompanyDTO save(@RequestBody Company company) throws MessageException {
         return companyService.save(company);
     }
 
