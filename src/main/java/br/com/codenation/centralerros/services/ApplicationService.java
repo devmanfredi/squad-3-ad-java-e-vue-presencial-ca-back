@@ -16,10 +16,7 @@ public class ApplicationService implements ApplicationServiceInterface {
 
     private ApplicationRepository applicationRepository;
 
-    public Application save (Application application) throws MessageException {
-        if (applicationRepository.findById(application.getId()).isPresent()) {
-            throw new MessageException("Aplicação já cadastrada.");
-        }
+    public Application save(Application application) {
         return applicationRepository.save(application);
     }
 

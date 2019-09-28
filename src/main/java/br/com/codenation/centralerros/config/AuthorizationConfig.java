@@ -27,9 +27,9 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        if (userService.findAll().isEmpty()) {
-            saveUser(auth);
-        }
+//        if (userService.findAll().isEmpty()) {
+//            saveUser(auth);
+//        }
         auth.userDetailsService(userService::findUserByCode);
     }
 
@@ -70,15 +70,15 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
         return bean;
     }
 
-    private void saveUser(AuthenticationManagerBuilder auth) throws Exception {
-        for (int i = 0; i <= 4; i++) {
-            User usuario = new User();
-            usuario.setPassword("User" + i);
-            usuario.setEmail("User" + i + "@gmail.com");
-            usuario.setName("Administrador" + i);
-            usuario.setCode("User" + i);
-            usuario.setId((long) i);
-            userService.saveConfig(usuario);
-        }
-    }
+//    private void saveUser(AuthenticationManagerBuilder auth) throws Exception {
+//        for (int i = 0; i <= 4; i++) {
+//            User usuario = new User();
+//            usuario.setPassword("User" + i);
+//            usuario.setEmail("User" + i + "@gmail.com");
+//            usuario.setName("Administrador" + i);
+//            usuario.setCode("User" + i);
+//            usuario.setId((long) i);
+//            userService.saveConfig(usuario);
+//        }
+//    }
 }

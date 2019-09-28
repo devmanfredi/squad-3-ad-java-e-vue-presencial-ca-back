@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping("/validate")
-    public String validate(UserCodeDTO userCode) {
+    public String validate(@RequestBody UserCodeDTO userCode) {
         return userService.validateCode(userCode.getCode());
     }
 }

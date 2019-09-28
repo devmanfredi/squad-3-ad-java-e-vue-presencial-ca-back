@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 @AllArgsConstructor
 public class LogService {
@@ -27,8 +28,7 @@ public class LogService {
         id.forEach(idLog -> logRepository.deleteById(idLog));
     }
 
-    public Page<Log> find(Optional<Long> applicationId, Optional<Long> companyId, Optional<ServerOrigin> origin, Optional<LevelLog> levelLog, Optional<String> details, Optional<Boolean> toFile,Integer page, Integer size, String orderBy, Sort.Direction direction) {
-
+    public Page<Log> find(Optional<Long> applicationId, Optional<Long> companyId, Optional<ServerOrigin> origin, Optional<LevelLog> levelLog, Optional<String> details, Optional<Boolean> toFile, Integer page, Integer size, String orderBy, Sort.Direction direction) {
 
         Log log = Log.builder()
                 .application(applicationId.map(id -> Application.builder().id(id).build()).orElse(null))
@@ -47,34 +47,4 @@ public class LogService {
                 .matchingAll()
                 .withMatcher(keyWord, ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
     }
-
-    //    public List<Log> findAllByServerOrigin(String serverOrigin) {
-//        return logRepository.findAllByServerOriginAndToFileFalse(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
-//    }
-
-//    public List<Log> findByServerOrigin(String serverOrigin) {
-//        return logRepository.findByServerOriginAndToFileFalse(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
-//    }
-
-//    public List<Log> findByLevel(String level) {
-//        return logRepository.findByLevelLogAndToFileFalse(LevelLog.valueOf(level.toUpperCase()));
-//    }
-
-//    public List<Log> orderByLevelLog() {
-//        return logRepository.findAllByToFileFalseOrderByLevelLogDesc();
-//    }
-
-//    public List<Log> findAllByServerOriginOrderByLevelLogDesc(String serverOrigin) {
-//
-//        return logRepository.findAllByServerOriginAndToFileFalseOrderByLevelLogDesc(ServerOrigin.valueOf(serverOrigin.toUpperCase()));
-//    }
-
-    //    public List<Log> findLogsByApplication(Long companyId, Long userId) {
-//        return logRepository.findLogsByApplicationAndCompanyAndUser(companyId, userId);
-//    }
-
-//    public List<Log> findAll() {
-//        return logRepository.findAll();
-//    }
-
 }

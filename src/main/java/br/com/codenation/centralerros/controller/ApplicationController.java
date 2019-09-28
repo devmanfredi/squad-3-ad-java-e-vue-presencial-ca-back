@@ -17,7 +17,7 @@ public class ApplicationController {
     private ApplicationService appService;
 
     @PostMapping
-    public Application save(Application app) throws MessageException {
+    public Application save(@RequestBody Application app) throws MessageException {
         return appService.save(app);
     }
 
