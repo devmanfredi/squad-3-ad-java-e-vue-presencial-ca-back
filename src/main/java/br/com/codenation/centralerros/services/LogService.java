@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 @AllArgsConstructor
 public class LogService {
@@ -28,7 +29,6 @@ public class LogService {
     }
 
     public Page<Log> find(Optional<Long> applicationId, Optional<Long> companyId, Optional<ServerOrigin> origin, Optional<LevelLog> levelLog, Optional<String> details, Optional<Boolean> toFile, Integer page, Integer size, String orderBy, Sort.Direction direction) {
-
 
         Log log = Log.builder()
                 .application(applicationId.map(id -> Application.builder().id(id).build()).orElse(null))
