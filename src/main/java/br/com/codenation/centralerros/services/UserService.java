@@ -7,7 +7,6 @@ import br.com.codenation.centralerros.mapper.UserMapper;
 import br.com.codenation.centralerros.repository.UserRepository;
 import br.com.codenation.centralerros.service.interfaces.UserServiceInterface;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -33,6 +32,9 @@ public class UserService implements UserServiceInterface {
     public UserDTO save(UserDTO user) throws MessageException {
         if (userRepository.findByCode(user.getCode()).isPresent()) {
             throw new MessageException("Código de Usuário já utilizado!");
+        }
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new MessageException("E-mail já utilizado!");
         }
         if (user.getEmail().isEmpty() || user.getPassword().isEmpty()) {
             throw new MessageException("Campos incompletos!");
