@@ -6,17 +6,17 @@ import br.com.codenation.centralerros.exception.MessageException;
 import br.com.codenation.centralerros.mapper.CompanyMapper;
 import br.com.codenation.centralerros.repository.CompanyRepository;
 import br.com.codenation.centralerros.service.interfaces.CompanyServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class CompanyService implements CompanyServiceInterface {
 
-    @Autowired
     private CompanyRepository companyRepository;
-
     private CompanyMapper companyMapper;
 
 

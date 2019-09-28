@@ -15,8 +15,6 @@ public interface CompanyMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "code", target = "code"),
             @Mapping(source = "name", target = "name"),
-            //@Mapping(target = "application.id", source = "apllication.id"),
-            @Mapping(target = "application", source = "")
     })
     Company map(CompanyDTO companyDTO);
 

@@ -30,15 +30,15 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
         if (userService.findAll().isEmpty()) {
             saveUser(auth);
         }
-        //auth.userDetailsService(userService::findUserByCode);
+        auth.userDetailsService(userService::findUserByCode);
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
                         "/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**",
-                        "/swagger-ui.html", "/webjars/**", "/**/*.css", "/**/*.js", "/gerarLog");
+                        "/webjars/**", "/**/*.css", "/**/*.js", "/gerarLog");
     }
 
     @Bean
@@ -78,8 +78,7 @@ public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
             usuario.setName("Administrador" + i);
             usuario.setCode("User" + i);
             usuario.setId((long) i);
-            userService.saveConfig(usuario);//temporário esse aqui é para a autenticação e o save normal está sendo usado nos testes e enpoints
-            auth.userDetailsService(userService::findUserByCode);
+            userService.saveConfig(usuario);
         }
     }
 }

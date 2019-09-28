@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CompanyDTO {
+
     private Long id;
     private String code;
     private String name;
-    //private Application application;
+
 }
