@@ -56,8 +56,7 @@ public class UserService implements UserServiceInterface {
     }
 
     public String validateCode(String userCodeDTO) {
-        User userValidate = userRepository.findByCode(userCodeDTO).orElse(null);
-        if (userValidate != null) {
+        if (userRepository.findByCode(userCodeDTO).isPresent()){
             return "Código já existente!";
         }
         return "Code apto para cadastro!";
