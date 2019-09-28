@@ -50,9 +50,9 @@ public class GeradorLog {
     private ServerOrigin getServerOrigin() {
         Random random = new Random();
         List<ServerOrigin> serverOriginList = new ArrayList<>();
-        serverOriginList.add(ServerOrigin.DESENVOLVIMENTO);
-        serverOriginList.add(ServerOrigin.HOMOLOGACAO);
-        serverOriginList.add(ServerOrigin.PRODUCAO);
+        serverOriginList.add(ServerOrigin.DEVELOPMENT);
+        serverOriginList.add(ServerOrigin.HOMOLOGATION);
+        serverOriginList.add(ServerOrigin.PRODUCTION);
         return serverOriginList.get(random.nextInt(3));
     }
 

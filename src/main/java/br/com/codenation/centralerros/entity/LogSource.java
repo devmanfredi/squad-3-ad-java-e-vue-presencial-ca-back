@@ -19,7 +19,7 @@ public class LogSource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(max = 150)
+    @Size(max = 150 )
     private String URL;
 
     @ManyToOne

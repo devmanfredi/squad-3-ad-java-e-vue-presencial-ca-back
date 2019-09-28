@@ -35,7 +35,7 @@ public class Log {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    private boolean toFile = false;
+    private Boolean toFile = false;
 
     @Enumerated(EnumType.STRING)
     private ServerOrigin serverOrigin;

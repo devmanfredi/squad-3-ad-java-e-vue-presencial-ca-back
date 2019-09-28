@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface LogRepository extends JpaRepository<Log, Long> {
@@ -24,6 +25,8 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     List<Log> findAllByToFileFalseOrderByLevelLogDesc();
 
     List<Log> findAllByServerOriginAndToFileFalseOrderByLevelLogDesc(ServerOrigin origin);
+
+    Optional<List<Log>> findByDetails(String details);
 
     @Modifying(clearAutomatically = true)
     @Transactional
