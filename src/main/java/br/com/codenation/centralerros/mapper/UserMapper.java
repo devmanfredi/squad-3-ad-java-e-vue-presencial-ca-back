@@ -17,7 +17,6 @@ public interface UserMapper {
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "email", target = "email"),
-            //@Mapping(source = "company.id", target ="company.id"),
             @Mapping(source = "userType", target = "userType"),
             @Mapping(target = "creationDate", source = ""),
             @Mapping(target = "itensPerPage", source = ""),
@@ -28,6 +27,5 @@ public interface UserMapper {
 
     UserDTO toDto(User user);
 
-    //User toUserCode(UserCodeDTO userCodeDTO);
     List<User> mapList(List<UserDTO> products);
 }
