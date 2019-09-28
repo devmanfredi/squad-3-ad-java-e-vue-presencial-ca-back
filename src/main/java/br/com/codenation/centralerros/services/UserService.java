@@ -19,12 +19,6 @@ import java.util.Optional;
 public class UserService implements UserServiceInterface {
 
     private UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     private UserMapper userMapper;
 
     @Override

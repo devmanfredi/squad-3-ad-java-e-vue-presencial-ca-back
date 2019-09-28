@@ -58,12 +58,6 @@ public class CompanyControllerTest {
         Assert.assertThat(result, Matchers.equalTo(companies));
     }
 
-    //@Test
-    //public void deveDeletarCompanhiaPeloId(){
-    //    Company company = buildCompany(null);
-    //    Mockito.when(companyController.delete(1L)).thenReturn(company).the‌​nReturn(null);
-    //}
-
     private CompanyDTO buildCompanyDTO(Long id) {
         return CompanyDTO.builder()
                 .id(id)

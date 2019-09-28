@@ -54,7 +54,6 @@ public class UserMapperTest {
                 .email("djavue@djavue.com")
                 .password("12345")
                 .userType(UserType.ADMIN)
-                //.company(Company.builder().id(20L).build())
                 .build();
     }
 
